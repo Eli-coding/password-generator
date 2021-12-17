@@ -2,28 +2,9 @@
 var generateBtn = document.querySelector("#generate");
 
 
-
-/*GIVEN I need a new, secure password
-WHEN I click the button to generate a password
-THEN I am presented with a series of prompts for password criteria
-WHEN prompted for password criteria
-THEN I select which criteria to include in the password
-WHEN prompted for the length of the password
-THEN I choose a length of at least 8 characters and no more than 128 characters
-WHEN asked for character types to include in the password
-THEN I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
-WHEN I answer each prompt
-THEN my input should be validated and at least one character type should be selected
-WHEN all prompts are answered
-THEN a password is generated that matches the selected criteria
-WHEN the password is generated
-THEN the password is either displayed in an alert or written to the page
-*/ 
-
 // Write password to the #password input
 function writePassword() 
 {
-
 
   // creates password variable to be the value returned by running generatePAssword 
   var password = generatePassword();
@@ -39,39 +20,49 @@ function writePassword()
 generateBtn.addEventListener("click", writePassword);
 document.getElementById("generate").addEventListener("click", writePassword );
 
+var lowerC = ["a","b","c","d","e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "y", "t", "u", "v", "w", "x", "y", "z"];
+var upperC = ["A","B","C","D","E","F", "G", "H", "I","J","K","L","M","N","O","P","Q","R","S","Y","T","U","V","W","X","Y","Z"];
+var spChar = ["!","@","#","$","%","^","&","*","(",")"];
+var numeric = ["1","2","3","4","5","6","7","8","9","0"]
+var finalPassword = ""
+
 
 
 function generatePassword() 
 {
-
+  var emptyArray = []
  
   var charNum = prompt("What length do you want for your password? Betweeen 8 characters and 128 characters" , "");
-  console.log (charNum)
-  if (charNum >= 8 || charNum <= 128 ) 
+  
+  if (charNum < 8 || charNum > 128 ) 
   {
-    console.log ( "8 and 128 is meet");
-
+      prompt("Error. Reload.")
+      console.log(emptyArray)
   }
   
 var lowercase = window.confirm("Do you want your password to include lowercase?");
+   
      if  (lowercase)
      {
-
-
+       //add lowercase array to final array 
+       emptyArray = emptyArray.concat(lowerC);
+      console.log(emptyArray)
      }
      
 var uppercase = window.confirm ("Do you want your password to include uppercase?");
+
      if (uppercase)
      {
-
-
+      emptyArray = emptyArray.concat(upperC);
+      console.log(emptyArray)
      }
      
 var Num = window.confirm ("Do you want your password to have numeric?");
+     
        if (Num)
        {
-
-
+        emptyArray = emptyArray.concat(numeric);
+        console.log(emptyArray)
        }
        
 
@@ -79,17 +70,23 @@ var specialChar = window.confirm ("Do you want your password to have special cha
 
  if (specialChar)
    {
-
-
+    emptyArray = emptyArray.concat(spChar);
+    console.log(emptyArray)
    }
   
+    console.log(emptyArray)
 
 
+   for ( i=0; i <= charNum; i++ )
+   {
+    var blah = Math.floor( Math.random() * emptyArray.length )
+    finalPassword += emptyArray[blah] 
+    console.log(blah)
+   }
 
 
-
-
-
+ // final array with generated password
+   return finalPassword;
 
 
 }
