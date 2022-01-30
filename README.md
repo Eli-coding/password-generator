@@ -4,6 +4,12 @@
 
 Link to deployed application:https://eli-coding.github.io/password-generator/
 
+Tools/Languages:
+•	Html 
+•	CSS 
+•	Java script
+
+
 Screenshot:
 
 ![Screenshot (59)](https://user-images.githubusercontent.com/80432031/146485134-33a6107f-9862-419b-87e5-da37b5c57691.png)
